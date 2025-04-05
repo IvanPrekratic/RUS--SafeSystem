@@ -14,9 +14,13 @@ uint8_t rowPins[ROWS] = { 9, 8, 7, 6 };
 
 Keypad keypad = Keypad(makeKeymap(keys), rowPins, colPins, ROWS, COLS);
 
-const String correctPin = "1234";
+String correctPin = "1234";
 String enteredPin = "";
 volatile bool hasEntered = false;
+
+String resetPasswordPattern = "*201*";
+volatile bool isResetPasswordMode = false;
+String inputPassword = "";
 
 void setup() {
   Serial.begin(9600);
@@ -42,10 +46,39 @@ void checkPin() {
     Serial.println("Sef otvoren!");
     hasEntered = true;
     delay(2000);
+  } else if(enteredPin == resetPasswordPattern) {
+    isResetPasswordMode = true;
+    newPin();
   } else {
     Serial.println("Pogresan PIN!");
     Serial.println("Unesite PIN:");
     enteredPin = "";
   }
+}
 
+void newPin() {
+  if (isResetPasswordMode) {
+    inputPassword = "";
+    while (isResetPasswordMode) {
+      Serial.print("Novi pin - postavljanje: ");
+      Serial.println(inputPassword);
+      char key = keypad.getKey();
+      if (key) {
+        if (key == 'C') {
+          inputPassword = "";
+        } else if (key == '#') {
+          if (inputPassword == resetPasswordPattern) {
+            Serial.println("PIN se ne može postaviti, pokušajte sa drugim pinom!");
+            inputPassword = "";
+          } else {
+            correctPin = inputPassword;
+            enteredPin = "";
+            isResetPasswordMode = false;
+          }
+        } else {
+          inputPassword += key;
+        }
+      }
+    }
+  }
 }
