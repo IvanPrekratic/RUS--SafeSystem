@@ -2,7 +2,6 @@
 # See https://docs.wokwi.com/guides/libraries
 
 # Automatically added based on includes:
-Servo
-LiquidCrystal I2C
-
 Keypad
+
+LiquidCrystal

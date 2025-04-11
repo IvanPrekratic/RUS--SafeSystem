@@ -10,7 +10,8 @@
       "top": -472.4,
       "left": 178.4,
       "attrs": {}
-    }
+    },
+    { "type": "wokwi-lcd2004", "id": "lcd1", "top": -299.24, "left": -425.6, "attrs": {} }
   ],
   "connections": [
     [ "keypad1:R1", "mega:9", "green", [ "v28.8", "h-110.9" ] ],
@@ -20,7 +21,16 @@
     [ "keypad1:C1", "mega:5", "green", [ "v67.2", "h-107.4" ] ],
     [ "keypad1:C2", "mega:4", "green", [ "v76.8", "h-107.4" ] ],
     [ "keypad1:C3", "mega:3", "green", [ "v86.4", "h-107.65" ] ],
-    [ "keypad1:C4", "mega:2", "green", [ "v96", "h-107.9" ] ]
+    [ "keypad1:C4", "mega:2", "green", [ "v96", "h-107.9" ] ],
+    [ "lcd1:RS", "mega:12", "green", [ "v76.8", "h503.1" ] ],
+    [ "lcd1:E", "mega:11", "green", [ "v67.2", "h493.6" ] ],
+    [ "lcd1:D4", "mega:10", "green", [ "v57.6", "h455.1" ] ],
+    [ "lcd1:D5", "mega:A5", "green", [ "v393.6", "h544.35" ] ],
+    [ "lcd1:D6", "mega:A4", "green", [ "v374.4", "h525.35" ] ],
+    [ "lcd1:D7", "mega:A3", "green", [ "v355.2", "h506.35" ] ],
+    [ "lcd1:VSS", "mega:GND", "black", [ "v0" ] ],
+    [ "lcd1:VDD", "mega:5V", "red", [ "v336", "h548.6" ] ],
+    [ "lcd1:RW", "mega:GND", "black", [ "v0" ] ]
   ],
   "dependencies": {}
 }
