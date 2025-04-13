@@ -87,7 +87,6 @@ void checkPin()
   if (enteredPin == correctPin)
   {
   float temp = readTemperature();
-  Serial.println(temp);
   if (temp > 38.0 || temp < 0.0)
   {
     lcd.setCursor(0, 0);
