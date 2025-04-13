@@ -3,34 +3,56 @@
   "author": "Renato",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-arduino-mega", "id": "mega", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-arduino-mega",
+      "id": "mega",
+      "top": -289.6,
+      "left": -69.8,
+      "rotate": 90,
+      "attrs": {}
+    },
     {
       "type": "wokwi-membrane-keypad",
       "id": "keypad1",
-      "top": -472.4,
-      "left": 178.4,
+      "top": -587.6,
+      "left": 447.2,
       "attrs": {}
     },
-    { "type": "wokwi-lcd2004", "id": "lcd1", "top": -299.24, "left": -425.6, "attrs": {} }
+    { "type": "wokwi-lcd2004", "id": "lcd1", "top": -587.24, "left": -147.2, "attrs": {} },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": -74.1,
+      "left": -134.5,
+      "rotate": 270,
+      "attrs": {}
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -2, "left": 153.6, "attrs": {} }
   ],
   "connections": [
-    [ "keypad1:R1", "mega:9", "green", [ "v28.8", "h-110.9" ] ],
-    [ "keypad1:R2", "mega:8", "green", [ "v38.4", "h-111.4" ] ],
-    [ "keypad1:R3", "mega:7", "green", [ "v48", "h-107.9" ] ],
+    [ "keypad1:R1", "mega:9", "red", [ "v28.8", "h-86.4", "v0.7" ] ],
+    [ "keypad1:R2", "mega:8", "orange", [ "v38.4", "h-111.4" ] ],
+    [ "keypad1:R3", "mega:7", "gold", [ "v48", "h-107.9" ] ],
     [ "keypad1:R4", "mega:6", "green", [ "v57.6", "h-107.4" ] ],
-    [ "keypad1:C1", "mega:5", "green", [ "v67.2", "h-107.4" ] ],
-    [ "keypad1:C2", "mega:4", "green", [ "v76.8", "h-107.4" ] ],
-    [ "keypad1:C3", "mega:3", "green", [ "v86.4", "h-107.65" ] ],
-    [ "keypad1:C4", "mega:2", "green", [ "v96", "h-107.9" ] ],
-    [ "lcd1:RS", "mega:12", "green", [ "v76.8", "h503.1" ] ],
-    [ "lcd1:E", "mega:11", "green", [ "v67.2", "h493.6" ] ],
-    [ "lcd1:D4", "mega:10", "green", [ "v57.6", "h455.1" ] ],
-    [ "lcd1:D5", "mega:A5", "green", [ "v393.6", "h544.35" ] ],
-    [ "lcd1:D6", "mega:A4", "green", [ "v374.4", "h525.35" ] ],
-    [ "lcd1:D7", "mega:A3", "green", [ "v355.2", "h506.35" ] ],
+    [ "keypad1:C1", "mega:5", "blue", [ "v67.2", "h-107.4" ] ],
+    [ "keypad1:C2", "mega:4", "violet", [ "v76.8", "h-107.4" ] ],
+    [ "keypad1:C3", "mega:3", "gray", [ "v86.4", "h-107.65" ] ],
+    [ "keypad1:C4", "mega:2", "white", [ "v96", "h-107.9" ] ],
+    [ "lcd1:RS", "mega:12", "green", [ "v28.8", "h317.1", "v134.4" ] ],
+    [ "lcd1:E", "mega:11", "cyan", [ "v19.2", "h307.2", "v154" ] ],
+    [ "lcd1:D4", "mega:10", "white", [ "v9.6", "h268.8", "v173.1" ] ],
+    [ "lcd1:D5", "mega:A5", "magenta", [ "v278.4", "h45.4" ] ],
+    [ "lcd1:D7", "mega:A3", "limegreen", [ "v201.6", "h0.3", "v60.85" ] ],
     [ "lcd1:VSS", "mega:GND", "black", [ "v0" ] ],
-    [ "lcd1:VDD", "mega:5V", "red", [ "v336", "h548.6" ] ],
-    [ "lcd1:RW", "mega:GND", "black", [ "v0" ] ]
+    [ "lcd1:VDD", "mega:5V", "gray", [ "v134.4", "h144.1", "v-2.3" ] ],
+    [ "lcd1:RW", "mega:GND", "black", [ "v0" ] ],
+    [ "ntc1:GND", "mega:GND.3", "blue", [ "v-28.8", "h-307.2", "v-319.05" ] ],
+    [ "ntc1:VCC", "mega:5V", "green", [ "v-124.8", "h102.9" ] ],
+    [ "servo1:PWM", "mega:13", "yellow", [ "h-19.2", "v-325.6" ] ],
+    [ "servo1:V+", "mega:5V", "red", [ "h-28.8", "v-280.6" ] ],
+    [ "servo1:GND", "mega:GND.1", "black", [ "h-38.4", "v-316.6" ] ],
+    [ "lcd1:D6", "mega:A4", "white", [ "v0" ] ],
+    [ "ntc1:OUT", "mega:A0", "orange", [ "v0" ] ]
   ],
   "dependencies": {}
 }
