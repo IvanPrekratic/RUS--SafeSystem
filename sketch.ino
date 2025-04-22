@@ -175,7 +175,7 @@ void checkPin()
       enteredPin = "";
     }
   }
-  else if (enteredPin == resetPasswordPattern)
+  else if (enteredPin == (correctPin + resetPasswordPattern))
   {
     isResetPasswordMode = true;
     newPin();
