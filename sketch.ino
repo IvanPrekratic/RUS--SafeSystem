@@ -247,20 +247,25 @@ void newPin()
         inputPassword += key;
       }
 
-      // Prikaz maskiranog unosa novog PIN-a (zadnja znamenka vidljiva)
       lcd.setCursor(0, 2);
       lcd.print("Unos: ");
       int start = 6;
-      for (int i = 0; i < inputPassword.length(); i++) {
-        if(inputPassword.length() < 5) {
-          if (i == inputPassword.length() - 1) {
-            lcd.print(inputPassword[i]);
-          } else {
-            lcd.print("*");
-          }
-        } else {
-          lcd.print("****")
+      lcd.setCursor(start, 2);
+
+      int len = inputPassword.length();
+
+      if (len < 4) {
+        for (int i = 0; i < len - 1; i++) {
+          lcd.print("*");
         }
+        lcd.print(inputPassword[len - 1]);
+        for (int i = len; i < 4; i++) {
+          lcd.print(" ");
+        }
+      }
+      else {
+        lcd.print("***");
+        lcd.print(inputPassword[len - 1]);
       }
       int totalLength = start + inputPassword.length();
       while (totalLength < 20) {
