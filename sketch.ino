@@ -22,10 +22,10 @@
  * @section notes Napomene
  * - Zadnja znamenka PIN unosa je vidljiva, dok su ostale maskirane.
  * - Ako je temperatura izvan granica (manja od 0°C ili veća od 38°C), sef se neće otvoriti.
- * - Resetiranje PIN-a vrši se unosom kombinacije *201*, nakon čega se unosi novi PIN.
+ * - Resetiranje PIN-a vrši se unosom kombinacije trenutnog pina i *201*, nakon čega se unosi novi PIN.
  *
  * @section author Autor
- * - Autor: [Tvoje ime], [Datum]
+ * - Autor: Renato Rak, Ivan Prekratić
  */
 
 // Biblioteke
@@ -103,14 +103,22 @@ void loop()
       enteredPin += key;
     }
 
-    // Maskirani prikaz PIN-a
+    // Prikaz maskiranog unosa (zadnja znamenka ostaje vidljiva)
     lcd.setCursor(0, 2);
     lcd.print("Unos: ");
-    for (int i = 0; i < enteredPin.length(); i++)
-    {
-      lcd.print(i == enteredPin.length() - 1 ? enteredPin[i] : '*');
+    int start = 6;
+    for (int i = 0; i < enteredPin.length(); i++) {
+      if (i == enteredPin.length() - 1) {
+        lcd.print(enteredPin[i]);
+      } else {
+        lcd.print("*");
+      }
     }
-    lcd.print("        ");
+    int totalLength = start + enteredPin.length();
+    while (totalLength < 20) {
+      lcd.print(" ");
+      totalLength++;
+    }
   }
 }
 
@@ -239,14 +247,22 @@ void newPin()
         inputPassword += key;
       }
 
-      // Maskirani prikaz novog PIN-a
+      // Prikaz maskiranog unosa novog PIN-a (zadnja znamenka vidljiva)
       lcd.setCursor(0, 2);
       lcd.print("Unos: ");
-      for (int i = 0; i < inputPassword.length(); i++)
-      {
-        lcd.print(i == inputPassword.length() - 1 ? inputPassword[i] : '*');
+      int start = 6;
+      for (int i = 0; i < inputPassword.length(); i++) {
+        if (i == inputPassword.length() - 1) {
+          lcd.print(inputPassword[i]);
+        } else {
+          lcd.print("*");
+        }
       }
-      lcd.print("        ");
+      int totalLength = start + inputPassword.length();
+      while (totalLength < 20) {
+        lcd.print(" ");
+        totalLength++;
+      }
     }
   }
 }
