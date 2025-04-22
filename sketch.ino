@@ -252,10 +252,14 @@ void newPin()
       lcd.print("Unos: ");
       int start = 6;
       for (int i = 0; i < inputPassword.length(); i++) {
-        if (i == inputPassword.length() - 1) {
-          lcd.print(inputPassword[i]);
+        if(inputPassword.length() < 5) {
+          if (i == inputPassword.length() - 1) {
+            lcd.print(inputPassword[i]);
+          } else {
+            lcd.print("*");
+          }
         } else {
-          lcd.print("*");
+          lcd.print("****")
         }
       }
       int totalLength = start + inputPassword.length();
